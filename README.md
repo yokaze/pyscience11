@@ -37,6 +37,11 @@ int main(void)
 # Install
 This library is header-only, therefore nothing needs to be installed.
 
+Following command could be helpful to place headers to some official location.
+```shell
+pip install pyscience11
+```
+
 # Requirements
 - [pybind11](https://github.com/pybind/pybind11)
 
