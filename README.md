@@ -20,7 +20,7 @@ int main(void)
 
     auto numpy = n11::import_numpy();
     auto scipy_special = s11::scipy::import_special();
-    auto x = numpy.linspace(-2, 2, 1001);
+    auto x = numpy.linspace(-2, 2, 1001, py::arg("dtype") = numpy.attr("float32"));
     auto y = scipy_special.erf(x);
 
     auto matplotlib = m11::import_matplotlib();
