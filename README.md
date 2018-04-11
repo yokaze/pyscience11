@@ -37,7 +37,7 @@ int main(void)
 # Install
 This library is header-only, therefore nothing needs to be installed.
 
-Following command could be helpful to place headers to some official location.
+Following command could be helpful to place headers into system directory.
 ```shell
 pip install pyscience11
 ```
