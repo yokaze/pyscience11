@@ -8,6 +8,12 @@
 #pragma once
 #include <pybind11/pybind11.h>
 
+/* These macros are defined in math.h. */
+#undef isfinite
+#undef signbit
+#undef isinf
+#undef isnan
+
 namespace numpy11 {
 
 class numpy_module : public pybind11::module {
