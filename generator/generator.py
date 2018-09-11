@@ -15,6 +15,15 @@ import scipy.signal
 import scipy.special
 
 
+def align_pragma(text):
+    ret = ''
+    for line in text.splitlines():
+        if (line.strip().startswith('#')):
+            line = line.strip()
+        ret += line + '\n'
+    return ret
+
+
 def generate_copyright(filename, package_name, package_version):
     template = '''\
 //
@@ -98,7 +107,21 @@ def generate_end_class(class_name, indent=0):
 
 
 def generate_class_function(function_name, indent=0):
-    template = '''
+    def is_cpp_macro_function(function_name):
+        return (function_name in ['isfinite', 'isinf', 'isnan', 'signbit'])
+
+    if (is_cpp_macro_function(function_name)):
+        template = '''
+#if !defined($FunctionName$)
+template <class... TArgs>
+pybind11::object $FunctionName$(TArgs&&... args)
+{
+    return attr("$FunctionName$")(std::forward<TArgs>(args)...);
+}
+#endif
+'''
+    else:
+        template = '''
 template <class... TArgs>
 pybind11::object $FunctionName$(TArgs&&... args)
 {
@@ -106,7 +129,7 @@ pybind11::object $FunctionName$(TArgs&&... args)
 }
 '''
     ret = template.replace('$FunctionName$', function_name)
-    return textwrap.indent(ret, ' ' * indent)
+    return align_pragma(textwrap.indent(ret, ' ' * indent))
 
 
 def generate_import(full_module_name, indent=0):
