@@ -1180,11 +1180,13 @@ public:
         return attr("iscomplexobj")(std::forward<TArgs>(args)...);
     }
 
+#if !defined(isfinite)
     template <class... TArgs>
     pybind11::object isfinite(TArgs&&... args)
     {
         return attr("isfinite")(std::forward<TArgs>(args)...);
     }
+#endif
 
     template <class... TArgs>
     pybind11::object isfortran(TArgs&&... args)
@@ -1198,17 +1200,21 @@ public:
         return attr("isin")(std::forward<TArgs>(args)...);
     }
 
+#if !defined(isinf)
     template <class... TArgs>
     pybind11::object isinf(TArgs&&... args)
     {
         return attr("isinf")(std::forward<TArgs>(args)...);
     }
+#endif
 
+#if !defined(isnan)
     template <class... TArgs>
     pybind11::object isnan(TArgs&&... args)
     {
         return attr("isnan")(std::forward<TArgs>(args)...);
     }
+#endif
 
     template <class... TArgs>
     pybind11::object isnat(TArgs&&... args)
@@ -2188,11 +2194,13 @@ public:
         return attr("sign")(std::forward<TArgs>(args)...);
     }
 
+#if !defined(signbit)
     template <class... TArgs>
     pybind11::object signbit(TArgs&&... args)
     {
         return attr("signbit")(std::forward<TArgs>(args)...);
     }
+#endif
 
     template <class... TArgs>
     pybind11::object sin(TArgs&&... args)
