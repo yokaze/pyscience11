@@ -5,6 +5,8 @@
 //  Copyright (C) 2018 Rue Yokaze
 //  Distributed under the MIT License.
 //
+//  This header is compatible with scipy 1.1.0.
+//
 #pragma once
 #include <pybind11/pybind11.h>
 
@@ -1507,6 +1509,12 @@ namespace scipy {
         pybind11::object obl_rad2_cv(TArgs&&... args)
         {
             return attr("obl_rad2_cv")(std::forward<TArgs>(args)...);
+        }
+
+        template <class... TArgs>
+        pybind11::object owens_t(TArgs&&... args)
+        {
+            return attr("owens_t")(std::forward<TArgs>(args)...);
         }
 
         template <class... TArgs>

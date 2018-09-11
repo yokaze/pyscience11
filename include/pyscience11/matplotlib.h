@@ -5,6 +5,8 @@
 //  Copyright (C) 2018 Rue Yokaze
 //  Distributed under the MIT License.
 //
+//  This header is compatible with matplotlib 2.2.3.
+//
 #pragma once
 #include <pybind11/pybind11.h>
 
@@ -13,6 +15,12 @@ namespace matplotlib11 {
 class matplotlib_module : public pybind11::module {
 public:
     using pybind11::module::module;
+
+    template <class... TArgs>
+    pybind11::object _add_data_doc(TArgs&&... args)
+    {
+        return attr("_add_data_doc")(std::forward<TArgs>(args)...);
+    }
 
     template <class... TArgs>
     pybind11::object _create_tmp_config_dir(TArgs&&... args)
@@ -93,6 +101,12 @@ public:
     }
 
     template <class... TArgs>
+    pybind11::object _parse_commandline(TArgs&&... args)
+    {
+        return attr("_parse_commandline")(std::forward<TArgs>(args)...);
+    }
+
+    template <class... TArgs>
     pybind11::object _preprocess_data(TArgs&&... args)
     {
         return attr("_preprocess_data")(std::forward<TArgs>(args)...);
@@ -111,9 +125,21 @@ public:
     }
 
     template <class... TArgs>
+    pybind11::object _set_logger_verbose_level(TArgs&&... args)
+    {
+        return attr("_set_logger_verbose_level")(std::forward<TArgs>(args)...);
+    }
+
+    template <class... TArgs>
     pybind11::object _url_lines(TArgs&&... args)
     {
         return attr("_url_lines")(std::forward<TArgs>(args)...);
+    }
+
+    template <class... TArgs>
+    pybind11::object _wrap(TArgs&&... args)
+    {
+        return attr("_wrap")(std::forward<TArgs>(args)...);
     }
 
     template <class... TArgs>
@@ -252,12 +278,6 @@ public:
     pybind11::object rc(TArgs&&... args)
     {
         return attr("rc")(std::forward<TArgs>(args)...);
-    }
-
-    template <class... TArgs>
-    pybind11::object rc_context(TArgs&&... args)
-    {
-        return attr("rc_context")(std::forward<TArgs>(args)...);
     }
 
     template <class... TArgs>

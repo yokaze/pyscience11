@@ -15,7 +15,7 @@ import scipy.signal
 import scipy.special
 
 
-def generate_copyright(filename):
+def generate_copyright(filename, package_name, package_version):
     template = '''\
 //
 //  $FileName$
@@ -24,9 +24,13 @@ def generate_copyright(filename):
 //  Copyright (C) 2018 Rue Yokaze
 //  Distributed under the MIT License.
 //
+//  This header is compatible with $PackageName$ $PackageVersion$.
+//
 '''
-    copyright = template.replace('$FileName$', filename)
-    return copyright
+    ret = template.replace('$FileName$', filename)
+    ret = ret.replace('$PackageName$', package_name)
+    ret = ret.replace('$PackageVersion$', package_version)
+    return ret
 
 
 def generate_pragma_once():
@@ -124,7 +128,7 @@ def generate_blank_line():
 '''
 
 
-def build_header(target_module):
+def build_header(target_module, package_name, package_version):
     cpp_keywords = ['delete', 'typename']
     full_module_name = target_module.__name__           # 'numpy.random'
     module_name_list = full_module_name.split('.')      # ['numpy', 'random']
@@ -134,7 +138,7 @@ def build_header(target_module):
     class_indent = 4 * (len(module_name_list) - 1)
     member_indent = 4 * len(module_name_list)
 
-    header = generate_copyright('%s.h' % module_name) + \
+    header = generate_copyright('%s.h' % module_name, package_name, package_version) + \
         generate_pragma_once() + \
         generate_include('pybind11/pybind11.h') + \
         generate_blank_line() + \
@@ -166,23 +170,23 @@ def build_header(target_module):
     fp.write(header)
 
 
-build_header(numpy)
-build_header(numpy.dual)
-build_header(numpy.fft)
-build_header(numpy.linalg)
-build_header(numpy.random)
-build_header(scipy)
-build_header(scipy.fftpack)
-build_header(scipy.integrate)
-build_header(scipy.interpolate)
-build_header(scipy.io)
-build_header(scipy.io.wavfile)
-build_header(scipy.linalg)
-build_header(scipy.ndimage)
-build_header(scipy.optimize)
-build_header(scipy.signal)
-build_header(scipy.spatial)
-build_header(scipy.special)
-build_header(scipy.stats)
-build_header(matplotlib)
-build_header(matplotlib.pyplot)
+build_header(numpy, numpy.__name__, numpy.__version__)
+build_header(numpy.dual, numpy.__name__, numpy.__version__)
+build_header(numpy.fft, numpy.__name__, numpy.__version__)
+build_header(numpy.linalg, numpy.__name__, numpy.__version__)
+build_header(numpy.random, numpy.__name__, numpy.__version__)
+build_header(scipy, scipy.__name__, scipy.__version__)
+build_header(scipy.fftpack, scipy.__name__, scipy.__version__)
+build_header(scipy.integrate, scipy.__name__, scipy.__version__)
+build_header(scipy.interpolate, scipy.__name__, scipy.__version__)
+build_header(scipy.io, scipy.__name__, scipy.__version__)
+build_header(scipy.io.wavfile, scipy.__name__, scipy.__version__)
+build_header(scipy.linalg, scipy.__name__, scipy.__version__)
+build_header(scipy.ndimage, scipy.__name__, scipy.__version__)
+build_header(scipy.optimize, scipy.__name__, scipy.__version__)
+build_header(scipy.signal, scipy.__name__, scipy.__version__)
+build_header(scipy.spatial, scipy.__name__, scipy.__version__)
+build_header(scipy.special, scipy.__name__, scipy.__version__)
+build_header(scipy.stats, scipy.__name__, scipy.__version__)
+build_header(matplotlib, matplotlib.__name__, matplotlib.__version__)
+build_header(matplotlib.pyplot, matplotlib.__name__, matplotlib.__version__)

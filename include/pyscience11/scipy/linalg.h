@@ -5,6 +5,8 @@
 //  Copyright (C) 2018 Rue Yokaze
 //  Distributed under the MIT License.
 //
+//  This header is compatible with scipy 1.1.0.
+//
 #pragma once
 #include <pybind11/pybind11.h>
 
@@ -19,6 +21,12 @@ namespace scipy {
         pybind11::object block_diag(TArgs&&... args)
         {
             return attr("block_diag")(std::forward<TArgs>(args)...);
+        }
+
+        template <class... TArgs>
+        pybind11::object cdf2rdf(TArgs&&... args)
+        {
+            return attr("cdf2rdf")(std::forward<TArgs>(args)...);
         }
 
         template <class... TArgs>
@@ -250,6 +258,12 @@ namespace scipy {
         }
 
         template <class... TArgs>
+        pybind11::object ldl(TArgs&&... args)
+        {
+            return attr("ldl")(std::forward<TArgs>(args)...);
+        }
+
+        template <class... TArgs>
         pybind11::object leslie(TArgs&&... args)
         {
             return attr("leslie")(std::forward<TArgs>(args)...);
@@ -295,6 +309,12 @@ namespace scipy {
         pybind11::object norm(TArgs&&... args)
         {
             return attr("norm")(std::forward<TArgs>(args)...);
+        }
+
+        template <class... TArgs>
+        pybind11::object null_space(TArgs&&... args)
+        {
+            return attr("null_space")(std::forward<TArgs>(args)...);
         }
 
         template <class... TArgs>
@@ -457,6 +477,12 @@ namespace scipy {
         pybind11::object solve_discrete_lyapunov(TArgs&&... args)
         {
             return attr("solve_discrete_lyapunov")(std::forward<TArgs>(args)...);
+        }
+
+        template <class... TArgs>
+        pybind11::object solve_lyapunov(TArgs&&... args)
+        {
+            return attr("solve_lyapunov")(std::forward<TArgs>(args)...);
         }
 
         template <class... TArgs>

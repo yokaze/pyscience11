@@ -5,6 +5,8 @@
 //  Copyright (C) 2018 Rue Yokaze
 //  Distributed under the MIT License.
 //
+//  This header is compatible with numpy 1.15.1.
+//
 #pragma once
 #include <pybind11/pybind11.h>
 
@@ -19,12 +21,6 @@ namespace numpy11 {
 class numpy_module : public pybind11::module {
 public:
     using pybind11::module::module;
-
-    template <class... TArgs>
-    pybind11::object _numpy_tester(TArgs&&... args)
-    {
-        return attr("_numpy_tester")(std::forward<TArgs>(args)...);
-    }
 
     template <class... TArgs>
     pybind11::object abs(TArgs&&... args)
@@ -939,6 +935,12 @@ public:
     }
 
     template <class... TArgs>
+    pybind11::object gcd(TArgs&&... args)
+    {
+        return attr("gcd")(std::forward<TArgs>(args)...);
+    }
+
+    template <class... TArgs>
     pybind11::object genfromtxt(TArgs&&... args)
     {
         return attr("genfromtxt")(std::forward<TArgs>(args)...);
@@ -1038,6 +1040,12 @@ public:
     pybind11::object histogram2d(TArgs&&... args)
     {
         return attr("histogram2d")(std::forward<TArgs>(args)...);
+    }
+
+    template <class... TArgs>
+    pybind11::object histogram_bin_edges(TArgs&&... args)
+    {
+        return attr("histogram_bin_edges")(std::forward<TArgs>(args)...);
     }
 
     template <class... TArgs>
@@ -1284,6 +1292,12 @@ public:
     pybind11::object kron(TArgs&&... args)
     {
         return attr("kron")(std::forward<TArgs>(args)...);
+    }
+
+    template <class... TArgs>
+    pybind11::object lcm(TArgs&&... args)
+    {
+        return attr("lcm")(std::forward<TArgs>(args)...);
     }
 
     template <class... TArgs>
@@ -1605,6 +1619,12 @@ public:
     }
 
     template <class... TArgs>
+    pybind11::object nanquantile(TArgs&&... args)
+    {
+        return attr("nanquantile")(std::forward<TArgs>(args)...);
+    }
+
+    template <class... TArgs>
     pybind11::object nanstd(TArgs&&... args)
     {
         return attr("nanstd")(std::forward<TArgs>(args)...);
@@ -1821,6 +1841,12 @@ public:
     }
 
     template <class... TArgs>
+    pybind11::object printoptions(TArgs&&... args)
+    {
+        return attr("printoptions")(std::forward<TArgs>(args)...);
+    }
+
+    template <class... TArgs>
     pybind11::object prod(TArgs&&... args)
     {
         return attr("prod")(std::forward<TArgs>(args)...);
@@ -1851,6 +1877,12 @@ public:
     }
 
     template <class... TArgs>
+    pybind11::object put_along_axis(TArgs&&... args)
+    {
+        return attr("put_along_axis")(std::forward<TArgs>(args)...);
+    }
+
+    template <class... TArgs>
     pybind11::object putmask(TArgs&&... args)
     {
         return attr("putmask")(std::forward<TArgs>(args)...);
@@ -1860,6 +1892,12 @@ public:
     pybind11::object pv(TArgs&&... args)
     {
         return attr("pv")(std::forward<TArgs>(args)...);
+    }
+
+    template <class... TArgs>
+    pybind11::object quantile(TArgs&&... args)
+    {
+        return attr("quantile")(std::forward<TArgs>(args)...);
     }
 
     template <class... TArgs>
@@ -2262,6 +2300,12 @@ public:
     pybind11::object take(TArgs&&... args)
     {
         return attr("take")(std::forward<TArgs>(args)...);
+    }
+
+    template <class... TArgs>
+    pybind11::object take_along_axis(TArgs&&... args)
+    {
+        return attr("take_along_axis")(std::forward<TArgs>(args)...);
     }
 
     template <class... TArgs>

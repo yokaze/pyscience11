@@ -5,6 +5,8 @@
 //  Copyright (C) 2018 Rue Yokaze
 //  Distributed under the MIT License.
 //
+//  This header is compatible with numpy 1.15.1.
+//
 #pragma once
 #include <pybind11/pybind11.h>
 
