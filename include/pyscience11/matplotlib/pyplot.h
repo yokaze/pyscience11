@@ -5,6 +5,8 @@
 //  Copyright (C) 2018 Rue Yokaze
 //  Distributed under the MIT License.
 //
+//  This header is compatible with matplotlib 2.2.3.
+//
 #pragma once
 #include <pybind11/pybind11.h>
 
@@ -1045,6 +1047,12 @@ namespace matplotlib {
         pybind11::object waitforbuttonpress(TArgs&&... args)
         {
             return attr("waitforbuttonpress")(std::forward<TArgs>(args)...);
+        }
+
+        template <class... TArgs>
+        pybind11::object warn_deprecated(TArgs&&... args)
+        {
+            return attr("warn_deprecated")(std::forward<TArgs>(args)...);
         }
 
         template <class... TArgs>

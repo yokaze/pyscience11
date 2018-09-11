@@ -5,6 +5,8 @@
 //  Copyright (C) 2018 Rue Yokaze
 //  Distributed under the MIT License.
 //
+//  This header is compatible with scipy 1.1.0.
+//
 #pragma once
 #include <pybind11/pybind11.h>
 
@@ -73,6 +75,12 @@ namespace scipy {
         pybind11::object bilinear(TArgs&&... args)
         {
             return attr("bilinear")(std::forward<TArgs>(args)...);
+        }
+
+        template <class... TArgs>
+        pybind11::object bilinear_zpk(TArgs&&... args)
+        {
+            return attr("bilinear_zpk")(std::forward<TArgs>(args)...);
         }
 
         template <class... TArgs>
@@ -370,6 +378,12 @@ namespace scipy {
         }
 
         template <class... TArgs>
+        pybind11::object find_peaks(TArgs&&... args)
+        {
+            return attr("find_peaks")(std::forward<TArgs>(args)...);
+        }
+
+        template <class... TArgs>
         pybind11::object find_peaks_cwt(TArgs&&... args)
         {
             return attr("find_peaks_cwt")(std::forward<TArgs>(args)...);
@@ -610,9 +624,21 @@ namespace scipy {
         }
 
         template <class... TArgs>
+        pybind11::object lp2bp_zpk(TArgs&&... args)
+        {
+            return attr("lp2bp_zpk")(std::forward<TArgs>(args)...);
+        }
+
+        template <class... TArgs>
         pybind11::object lp2bs(TArgs&&... args)
         {
             return attr("lp2bs")(std::forward<TArgs>(args)...);
+        }
+
+        template <class... TArgs>
+        pybind11::object lp2bs_zpk(TArgs&&... args)
+        {
+            return attr("lp2bs_zpk")(std::forward<TArgs>(args)...);
         }
 
         template <class... TArgs>
@@ -622,9 +648,21 @@ namespace scipy {
         }
 
         template <class... TArgs>
+        pybind11::object lp2hp_zpk(TArgs&&... args)
+        {
+            return attr("lp2hp_zpk")(std::forward<TArgs>(args)...);
+        }
+
+        template <class... TArgs>
         pybind11::object lp2lp(TArgs&&... args)
         {
             return attr("lp2lp")(std::forward<TArgs>(args)...);
+        }
+
+        template <class... TArgs>
+        pybind11::object lp2lp_zpk(TArgs&&... args)
+        {
+            return attr("lp2lp_zpk")(std::forward<TArgs>(args)...);
         }
 
         template <class... TArgs>
@@ -691,6 +729,18 @@ namespace scipy {
         pybind11::object parzen(TArgs&&... args)
         {
             return attr("parzen")(std::forward<TArgs>(args)...);
+        }
+
+        template <class... TArgs>
+        pybind11::object peak_prominences(TArgs&&... args)
+        {
+            return attr("peak_prominences")(std::forward<TArgs>(args)...);
+        }
+
+        template <class... TArgs>
+        pybind11::object peak_widths(TArgs&&... args)
+        {
+            return attr("peak_widths")(std::forward<TArgs>(args)...);
         }
 
         template <class... TArgs>

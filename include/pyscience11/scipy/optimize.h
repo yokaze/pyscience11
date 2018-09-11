@@ -5,6 +5,8 @@
 //  Copyright (C) 2018 Rue Yokaze
 //  Distributed under the MIT License.
 //
+//  This header is compatible with scipy 1.1.0.
+//
 #pragma once
 #include <pybind11/pybind11.h>
 
