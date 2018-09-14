@@ -18,6 +18,7 @@ class pyscience11_install_headers(install_headers):
             (out, _) = self.copy_file(header, install_dir)
             self.outfiles.append(out)
 
+
 headers = [
     'include/pyscience11/matplotlib/pyplot.h',
     'include/pyscience11/numpy/dual.h',
