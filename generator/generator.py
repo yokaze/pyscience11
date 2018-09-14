@@ -119,6 +119,12 @@ pybind11::object $FunctionName$(TArgs&&... args)
     return attr("$FunctionName$")(std::forward<TArgs>(args)...);
 }
 #endif
+
+template <class... TArgs>
+pybind11::object call_$FunctionName$(TArgs&&... args)
+{
+    return attr("$FunctionName$")(std::forward<TArgs>(args)...);
+}
 '''
     else:
         template = '''

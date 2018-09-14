@@ -1183,6 +1183,12 @@ public:
 #endif
 
     template <class... TArgs>
+    pybind11::object call_isfinite(TArgs&&... args)
+    {
+        return attr("isfinite")(std::forward<TArgs>(args)...);
+    }
+
+    template <class... TArgs>
     pybind11::object isfortran(TArgs&&... args)
     {
         return attr("isfortran")(std::forward<TArgs>(args)...);
@@ -1202,6 +1208,12 @@ public:
     }
 #endif
 
+    template <class... TArgs>
+    pybind11::object call_isinf(TArgs&&... args)
+    {
+        return attr("isinf")(std::forward<TArgs>(args)...);
+    }
+
 #if !defined(isnan)
     template <class... TArgs>
     pybind11::object isnan(TArgs&&... args)
@@ -1209,6 +1221,12 @@ public:
         return attr("isnan")(std::forward<TArgs>(args)...);
     }
 #endif
+
+    template <class... TArgs>
+    pybind11::object call_isnan(TArgs&&... args)
+    {
+        return attr("isnan")(std::forward<TArgs>(args)...);
+    }
 
     template <class... TArgs>
     pybind11::object isnat(TArgs&&... args)
@@ -2189,6 +2207,12 @@ public:
         return attr("signbit")(std::forward<TArgs>(args)...);
     }
 #endif
+
+    template <class... TArgs>
+    pybind11::object call_signbit(TArgs&&... args)
+    {
+        return attr("signbit")(std::forward<TArgs>(args)...);
+    }
 
     template <class... TArgs>
     pybind11::object sin(TArgs&&... args)
